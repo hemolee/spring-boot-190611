@@ -1,26 +1,26 @@
 var app = (function () {
     // console.log('ggg');
-    let init = function () {
+    let init = function () { //맨처음에 보여줄 화면
         login_form(); //login_form은 private 메소드가 되었다.
 
     };
     let login_form = function () {
-        var wrapper = document.querySelector('#wrapper'); //document = html 전체 하나
+        let wrapper = document.querySelector('#wrapper'); //document = html 전체 하나 DOM객체(id나 class있는 것). 
         wrapper.innerHTML = +'<form action="/action_page.php">'
-            + '<div id="target">'
+            // + '<div id="target">'
             + '  First name:<br>'
             + '  <input type="text" name="firstname" value="Mickey">'
             + '  <br>'
             + '  Last name:<br>'
             + '  <input type="text" name="lastname" value="Mouse">'
             + '  <br><br>'
-            + '  <input type="submit" value="로그인">'
-            + '  <input type="button" id=btn3 value="회원가입">'
-            + '</div>'
+            + '  <input type="submit" value="Login">'
+            + '  <input type="button" id=btn_join value="Join">'
+            // + '</div>'
             + '</form> ';
 
         // var btn = document.querySelector('#btn');
-        var target = document.getElementById('target');
+        // var target = document.getElementById('target');
         // btn.addEventListener('click', function () {
         //     //   document.getElementById('target').innerHTML =' ';
         //     target.innerHTML = ' ';
@@ -31,9 +31,14 @@ var app = (function () {
         //     var temp = document.createTextNode('새로 추가됨');
         //     target.appendChild(temp);
         // });
-        var btn3 = document.querySelector('#btn3');
-        btn3.addEventListener('click', function () {
-            // join_form();
+        let btn_join = document.querySelector('#btn_join');
+        btn_join.addEventListener('click', function () {
+            join_form();
+        });
+    }
+
+        let join_form = function(){
+            let wrapper = document.querySelector('#wrapper');
             wrapper.innerHTML =
              +'<form action="/action_page.php">'
              + '  id:<br>'
@@ -45,31 +50,20 @@ var app = (function () {
              + '  name:<br>'
              + '  <input type="text" name="c_name" value="name">'
              + '  <br>'
-             + '  ssm:<br>'
-             + '  <input type="text" name="ssm" value="ssm">'
+             + '  birth:<br>'
+             + '  <input type="text" name="birth" value="birth">'
              + '  <br>'
              + '  phone:<br>'
              + '  <input type="text" name="phone" value="phone">'
              + '  <br><br>'
-             + '  <input type="submit" id="btn_join" value="확인">'
+             + '  <input type="submit" id="btn_confirm" value="확인">'
+            //  + '  <input type="reset" id="btn_cancel" value="취소">'
              +'</form> '
-        });
+       
    
-        var btn_join = document.querySelector('#btn_join');
-        btn_join.addEventListener('click', function () {
-            // login_form();
-            wrapper.innerHTML = +'<form action="/action_page.php">'
-            + '<div id="target">'
-            + '  First name:<br>'
-            + '  <input type="text" name="firstname" value="Mickey">'
-            + '  <br>'
-            + '  Last name:<br>'
-            + '  <input type="text" name="lastname" value="Mouse">'
-            + '  <br><br>'
-            + '  <input type="submit" value="로그인">'
-            + '  <input type="button" id=btn3 value="회원가입">'
-            + '</div>'
-            + '</form> ';
+        let btn_confirm = document.querySelector('#btn_confirm');
+        btn_confirm.addEventListener('click', function () {
+            login_form();
         });
     }
 
