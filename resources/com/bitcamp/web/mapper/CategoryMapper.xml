@@ -2,8 +2,47 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.mybatis.example.BlogMapper">
-  <select id="selectBlog" resultType="Blog">
-    select * from Blog where id = #{id}
+
+
+<resultMap id="categoryMap" type="com.bitcamp.web.domain.CategoryDTO">
+  <id property="categoryId" column="CATEGORY_ID" />
+  <result property="categoryName" column="CATEGORY_NAME" />
+  <result property="description" column="DESCRIPTION" /> 
+ </resultMap>
+
+<mapper namespace="com.bitcamp.web.mapper.CategoryMapper">
+  <insert
+  id="insertCategory"
+  parameterType="com.bitcamp.web.domain.CategoryDTO">
+  insert into Categories (CATEGORY_ID,CATEGORY_NAME,DESCRIPTION)
+  values (#{categoryId},#{categoryName},#{description})
+  </insert>
+  <select id="selectCategories" resultMap="com.bitcamp.web.domain.CategoryDTO">
+    select * from Categories
   </select>
+    <select id="selectCategoriesByOption"
+    resultMap="com.bitcamp.web.domain.CategoryDTO"
+    parameterType="com.bitcamp.web.domain.CategoryDTO">
+    
+    select * from Categories where CATEGORY_NAME = #{categoryName}
+  </select>
+    <select id="selectCategoryById" 
+    resultMap="com.bitcamp.web.domain.CategoryDTO"
+    parameterType="string">
+    select * from Categories where Category_ID = #{categoryId}
+  </select>
+<update
+  id="updateCategory"
+  parameterType="com.bitcamp.web.domain.CategoryDTO">
+   update Categories set
+    CATEGORY_NAME = #{categoryName},
+    DESCRIPTION = #{description}
+
+  where Category_ID = #{categoryId}
+  </update>
+<delete
+  id="deleteCategory"
+  parameterType="com.bitcamp.web.domain.CategoryDTO">
+  delete from Categories where Category_ID = #{CategoryId}
+  </delete>
 </mapper>

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public interface SupplierService {
     public void addSupplier(SupplierDTO supplier);
     public List<SupplierDTO> findSuppliers();
-    public List<SupplierDTO> findSuppliersByWord(SupplierDTO supplier);
+    public List<SupplierDTO> findSuppliersByOption(SupplierDTO option);
     public SupplierDTO findSupplierById(String supplierId);
     public void updateSupplier(SupplierDTO supplier);
     public void deleteSupplier(SupplierDTO supplier);

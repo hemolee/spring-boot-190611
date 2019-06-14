@@ -2,7 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-            
+ <resultMap id="suppierMap" type="com.bitcamp.web.domain.SupplierDTO">
+  <id property="supplierId" column="SUPPLIER_ID" />
+  <result property="supplierName" column="SUPPLIER_NAME" />
+  <result property="contactName" column="CONTACT_NAME" />
+  <result property="address" column="ADDRESS" />
+  <result property="city" column="CITY" />
+  <result property="postalCode" column="POSTAL_CODE" />
+  <result property="country" column="COUNTRY" />
+  <result property="phone" column="PHONE" />
+ </resultMap>           
 <mapper namespace="com.bitcamp.web.mapper.SupplierMapper">
   <insert
   id="insertSupplier"
@@ -10,17 +19,17 @@
   insert into Suppliers (SUPPLIER_ID,SUPPLIER_NAME,CONTACT_NAME,ADDRESS,CITY,POSTAL_CODE,COUNTRY,PHONE)
   values (#{supplierId},#{supplierName},#{contactName},#{address},#{city},#{postalCode},#{country},#{phone})
   </insert>
-  <select id="selectSuppliers" resultType="com.bitcamp.web.domain.SupplierDTO">
+  <select id="selectSuppliers" resultMap="com.bitcamp.web.domain.SupplierDTO">
     select * from Suppliers
   </select>
     <select id="selectSuppliersByOption"
-    resultType="com.bitcamp.web.domain.SupplierDTO"
+    resultMap="com.bitcamp.web.domain.SupplierDTO"
     parameterType="com.bitcamp.web.domain.SupplierDTO">
     
     select * from Suppliers where Supplier_NAME = #{supplierName}
   </select>
     <select id="selectSupplierById" 
-    resultType="com.bitcamp.web.domain.SupplierDTO"
+    resultMap="com.bitcamp.web.domain.SupplierDTO"
     parameterType="string">
     select * from Suppliers where Supplier_ID = #{supplierId}
   </select>

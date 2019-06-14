@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 public interface ProductService<ProductDTO> {
     public void addProduct(ProductDTO product);
     public List<ProductDTO> findProducts();
-    public List<ProductDTO> findProductsByWord(ProductDTO product);
-    public ProductDTO findProductById(ProductDTO product);
+    public List<ProductDTO> findProductsByOption(ProductDTO option);
+    public ProductDTO findProductById(String productId);
     public void updateProduct(ProductDTO product);
     public void deleteProduct(ProductDTO product);
     
