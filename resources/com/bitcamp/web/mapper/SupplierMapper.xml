@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+            
+<mapper namespace="com.bitcamp.web.mapper.SupplierMapper">
+  <insert
+  id="insertSupplier"
+  parameterType="com.bitcamp.web.domain.SupplierDTO">
+  insert into Suppliers (SUPPLIER_ID,SUPPLIER_NAME,CONTACT_NAME,ADDRESS,CITY,POSTAL_CODE,COUNTRY,PHONE)
+  values (#{supplierId},#{supplierName},#{contactName},#{address},#{city},#{postalCode},#{country},#{phone})
+  </insert>
+  <select id="selectSuppliers" resultType="com.bitcamp.web.domain.SupplierDTO">
+    select * from Suppliers
+  </select>
+    <select id="selectSuppliersByOption"
+    resultType="com.bitcamp.web.domain.SupplierDTO"
+    parameterType="com.bitcamp.web.domain.SupplierDTO">
+    
+    select * from Suppliers where Supplier_NAME = #{supplierName}
+  </select>
+    <select id="selectSupplierById" 
+    resultType="com.bitcamp.web.domain.SupplierDTO"
+    parameterType="string">
+    select * from Suppliers where Supplier_ID = #{supplierId}
+  </select>
+<update
+  id="updateSupplier"
+  parameterType="com.bitcamp.web.domain.SupplierDTO">
+   update Suppliers set
+    Supplier_NAME = #{supplierName},
+    CONTACT_NAME = #{contactName},
+    ADDRESS = #{address},
+    CITY = #{city},
+    POSTAL_CODE = #{postalCode},  
+    COUNTRY = #{country},
+    PHONE = #{phone}       
+
+  where Supplier_ID = #{supplierId}
+  </update>
+<delete
+  id="deleteSupplier"
+  parameterType="com.bitcamp.web.domain.SupplierDTO">
+  delete from Suppliers where Supplier_ID = #{supplierId}
+  </delete>
+</mapper>
