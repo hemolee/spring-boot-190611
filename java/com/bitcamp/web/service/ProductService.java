@@ -2,15 +2,17 @@ package com.bitcamp.web.service;
 
 import java.util.List;
 
+import com.bitcamp.web.domain.ProductDTO;
+
 import org.springframework.stereotype.Component;
 
 /**
  * ProductService
  * 
- * @param <ProductDTO>
+ * 
  */
 @Component
-public interface ProductService<ProductDTO> {
+public interface ProductService {
     public void addProduct(ProductDTO product);
     public List<ProductDTO> findProducts();
     public List<ProductDTO> findProductsByOption(ProductDTO option);

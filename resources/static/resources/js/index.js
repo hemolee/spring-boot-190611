@@ -8,13 +8,14 @@ var app = ( () => {
         let wrapper = document.querySelector('#wrapper'); //document = html 전체 하나. wrapper는 DOM객체(id나 class있는 것). 
         wrapper.innerHTML = '<form action="/action_page.php">'
             // + '<div id="target">'
+     
             + '  First name:<br>'
             + '  <input type="text" name="firstname" value="Mickey">'
             + '  <br>'
             + '  Last name:<br>'
             + '  <input type="text" name="lastname" value="Mouse">'
             + '  <br><br>'
-            + '  <input type="submit" value="Login">'
+            + '  <input type="submit" id=btn_login value="Login">' 
             + '  <input type="button" id=btn_join value="Join">'
             // + '</div>'
             + '</form> ';
@@ -35,7 +36,29 @@ var app = ( () => {
         btn_join.addEventListener('click',  () => {
             join_form();
         });
+        let btn_login = document.querySelector('#btn_login');
+        btn_login.addEventListener('click',(e)=>{
+            e.preventDefault();
+            alert('로그인 버튼 클릭');
+            count();
+        });
     }
+
+        let count =()=>{            
+            let xhr = new XMLHttpRequest();
+            method = 'GET';
+            url = 'count';
+            xhr.open(method, url, true);
+            xhr.onreadystatechange=()=>{
+                if(xhr.readyState === 4 && xhr.status === 200){ //this.status 로 쓰려면 람다대신 function으로..
+                    alert('성공');
+                    let wrapper = document.querySelector('#wrapper');
+                    wrapper.innerHTML = '총 고객수 : <h1>' + xhr.responseText + '</h1>'    //function일땐 this.responsetext                
+                }
+            }
+            
+            xhr.send();
+        }
 
         let join_form = () => {
             let wrapper = document.querySelector('#wrapper');

@@ -2,15 +2,17 @@ package com.bitcamp.web.service;
 
 import java.util.List;
 
+import com.bitcamp.web.domain.EmployeeDTO;
+
 import org.springframework.stereotype.Component;
 
 /**
  * EmployeeService
  * 
- * @param <EmployeeDTO>
+ * 
  */
 @Component
-public interface EmployeeService<EmployeeDTO> {
+public interface EmployeeService {
     public void addEmployee(EmployeeDTO employee);
     public List<EmployeeDTO> findEmployees();
     public List<EmployeeDTO> findEmplofyeesByOption(EmployeeDTO option);

@@ -8,7 +8,9 @@ import lombok.Data;
 /**
  * OrderDTO
  */
-@Data @Component @Lazy
+@Data
+@Component
+@Lazy
 public class OrderDTO {
 
     private String orderId ,

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Component;
 
 import lombok.Data;
 
-@Data @Component @Lazy
+@Data
+@Component
+@Lazy
 public class CustomerDTO {
    private String customerId ,
         customerName,

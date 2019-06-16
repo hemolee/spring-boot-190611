@@ -2,6 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitcamp.web.mapper.EmployeeMapper">
 <resultMap id="employeeMap" type="com.bitcamp.web.domain.EmployeeDTO">
   <id property="employeeId" column="Employee_ID" />
   <result property="manager" column="MANAGER" />
@@ -10,24 +12,23 @@
   <result property="photo" column="PHOTO" />
   <result property="notes" column="NOTES" />
  </resultMap>
-<mapper namespace="com.bitcamp.web.mapper.EmployeeMapper">
   <insert
   id="insertEmployee"
   parameterType="com.bitcamp.web.domain.EmployeeDTO">
   insert into Employees (Employee_ID,MANAGER,NAME,BIRTH_DATE,PHOTO,NOTES)
   values (#{employeeId},#{manager},#{name},#{birthDate},#{photo},#{notes})
   </insert>
-  <select id="selectEmployees" resultMap="com.bitcamp.web.domain.EmployeeDTO">
+  <select id="selectEmployees" resultMap="employeeMap">
     select * from Employees
   </select>
     <select id="selectEmployeesByOption"
-    resultMap="com.bitcamp.web.domain.EmployeeDTO"
+    resultMap="employeeMap"
     parameterType="com.bitcamp.web.domain.EmployeeDTO">
     
     select * from Employees where NAME = #{name}
   </select>
     <select id="selectEmployeeById" 
-    resultMap="com.bitcamp.web.domain.EmployeeDTO"
+    resultMap="employeeMap"
     parameterType="string">
     select * from Employees where Employee_ID = #{employeeId}
   </select>
