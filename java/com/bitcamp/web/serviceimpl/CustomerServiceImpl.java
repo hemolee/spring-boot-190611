@@ -19,7 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(CustomerDTO customer) {
-
+        customerMapper.insertCustomer(customer);
+        
     }
 
     @Override
@@ -52,6 +53,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.selectCount();
     }
 
+    @Override
+    public CustomerDTO login(CustomerDTO customer) {      
 
-    
+        return customerMapper.login(customer); //void로 하면 소진. 이렇게 받아서 리턴해주면... 담아진다..
+    }    
 }

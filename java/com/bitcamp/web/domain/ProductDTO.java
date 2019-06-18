@@ -8,7 +8,9 @@ import lombok.Data;
 /**
  * ProductDTO
  */
-@Data @Component @Lazy
+@Data 
+@Component 
+@Lazy
 public class ProductDTO {
 
     private String productId,

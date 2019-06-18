@@ -23,20 +23,24 @@
   values (#{customerId},#{customerName},#{password},#{ssn},#{phone},#{city},#{address},#{postalcode},#{photo})
   </insert>
   <select id="selectCustomers" resultMap="customerMap">
-    select * from Customers
+    select * from Customers 
   </select>
     <select id="selectCustomersByOption"
     resultMap="customerMap"
     parameterType="com.bitcamp.web.domain.CustomerDTO">
     
-    select * from Customers where CUSTOMER_NAME = #{customerName}
+    select * from Customers where CUSTOMER_NAME Like #{customerName}
   </select>
     <select id="selectCustomerById" 
     resultMap="customerMap"
     parameterType="string">
-    select * from Customers where Customer_ID = #{customerId}
+    select * from Customers where Customer_ID Like #{customerId}
   </select>
-
+    <select id="login" 
+    resultMap="customerMap"
+    parameterType="com.bitcamp.web.domain.CustomerDTO">
+    select * from Customers where Customer_ID Like #{customerId} and PASSWORD LIKE #{password}
+  </select>
   <select id = "selectCount" resultType="int">
   select count(*) as count from CUSTOMERS
   </select>

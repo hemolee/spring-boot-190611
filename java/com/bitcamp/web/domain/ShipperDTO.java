@@ -8,7 +8,9 @@ import lombok.Data;
 /**
  * SheeperDTO
  */
-@Data @Component @Lazy
+@Data 
+@Component 
+@Lazy
 public class ShipperDTO {
     private String shipperId ,
     shipperName ,

@@ -20,4 +20,13 @@ public class SupplierDTO {
             country ,
             phone ;
     
+    //lombok덕분에 게터세터 생략됨.
+            // public void setCity(String city){
+    //     this.city =city;
+        
+    // }
+    // public String getCity(){
+    //     return this.city;
+
+    // }
 }

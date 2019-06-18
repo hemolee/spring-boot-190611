@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 
  * 
  */
-@Component
+@Component  //@component 있어야 값이 안없어지고 저장할 수 있음...
 public interface CustomerService {
     public void addCustomer(CustomerDTO customer);
     public List<CustomerDTO> findCustomers();
@@ -20,5 +20,5 @@ public interface CustomerService {
     public void updateCustomer(CustomerDTO customer);
     public void deleteCustomer(CustomerDTO customer);
 	public int countAll();
-    
+    public CustomerDTO login(CustomerDTO customer);    
 }
